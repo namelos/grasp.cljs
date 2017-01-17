@@ -1,18 +1,7 @@
-(ns grasp.core
-  (:require [om.core :as om :include-macros true]
-            [om.dom :as dom :include-macros true]))
+(ns grasp.core)
 
 (enable-console-print!)
 
-(defonce app-state (atom {:text "Hello Chestnut!"}))
+(def query js/document.getElementById)
 
-(defn root-component [app owner]
-  (reify
-    om/IRender
-    (render [_]
-      (dom/div nil (dom/h1 nil (:text app))))))
-
-(om/root
- root-component
- app-state
- {:target (js/document.getElementById "app")})
+(aset (query "app") "innerHTML" "Hello")
